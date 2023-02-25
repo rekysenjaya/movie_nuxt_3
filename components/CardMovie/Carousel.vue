@@ -5,12 +5,12 @@ const { movie } = defineProps(['movie'])
 <template>
 	<div class="hidden lg:ml-6 lg:block">
 		<div class="font-semibold flex flex-row bg-black mb-5 mt-5 grid grid-cols-2 gap-4">
-			<CardMovieCarouselImage />
+			<CardMovieImage :movie="{ ...movie, scale: true }" />
 			<CardMovieCarouselDesc />
 		</div>
 	</div>
 	<div class="lg:hidden bg-black">
-		<CardMovieCarouselImage />
+		<CardMovieImage :movie="{ ...movie, scale: true }" />
 		<CardMovieCarouselDesc />
 	</div>
 </template>

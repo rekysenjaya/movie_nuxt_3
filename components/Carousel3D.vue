@@ -4,10 +4,10 @@ import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 </script>
 
 <template>
-	<div class="pt-5">
+	<div class="pt-5 pb-5">
 		<Carousel :itemsToShow="3" :wrapAround="true" :transition="500">
-			<Slide v-for="slide in 10" :key="slide" class="pl-5 pr-5">
-				<CardMovieCarousel />
+			<Slide v-for="slide in 3" :key="slide" class="pl-5 pr-5">
+				<CardMovieCarousel :movie="{ key: slide }" />
 			</slide>
 
 			<template #addons>
