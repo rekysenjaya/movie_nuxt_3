@@ -24,7 +24,7 @@ const clickOrderBy = (val) => {
 				</div>
 			</div>
 		</div>
-		<div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 -mt-44">
+		<div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 -mt-44 mb-10">
 			<div class="grid sm:grid-cols-4 lg:grid-cols-6 gap-4 gap-y-8">
 				<CardMovie v-for="slide in 10" :key="slide" :movie="{ key: slide }" />
 			</div>
