@@ -10,5 +10,8 @@
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.4.1",
     "nuxt": "^3.2.2"
+  },
+  "dependencies": {
+    "vue3-carousel": "^0.2.11"
   }
 }
