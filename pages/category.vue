@@ -10,5 +10,5 @@ watchEffect(() => {
 </script>
 
 <template>
-	<GridCard :title="'Movies'" :byCategory="{}" />
+	<GridCard :title="'Movies'" :byCategory="{}" maxResults="12" />
 </template>

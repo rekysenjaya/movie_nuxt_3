@@ -1,14 +1,14 @@
 <script setup>
 import constants from '~~/constants';
 const { loading, list, getList } = useAutocompleteSearch()
-const { title, byCategory } = defineProps(['title', 'byCategory'])
+const { title, maxResults, byCategory } = defineProps(['title', 'maxResults', 'byCategory'])
 const sortBy = ref('popularity')
 
 const clickOrderBy = (val) => {
 	sortBy.value = val
 }
 
-const refresh = () => getList({ q: title, maxResults: byCategory ? 12 : 15 })
+const refresh = () => getList({ q: title || 'recomended', maxResults })
 
 onMounted(() => {
 	if (!list.value.length) {
@@ -20,7 +20,7 @@ onMounted(() => {
 
 <template>
 	<div>
-		<div class="bg-[#292e35] pt-16 pb-48">
+		<div v-if="title" class="bg-[#292e35] pt-16 pb-48">
 			<div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
 				<div class="mb-2 h-1 bg-[#E74C3C] w-[112px]" />
 				<div class="flex justify-between">
@@ -35,11 +35,12 @@ onMounted(() => {
 				</div>
 			</div>
 		</div>
-		<div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 -mt-44 mb-10 flex flex-row">
+		<div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 mb-10 flex flex-row" :class="title ? '-mt-44' : ''">
 			<div v-if="byCategory">
 				<Category />
 			</div>
-			<div class="grid gap-4 gap-y-8" :class="byCategory ? 'sm:grid-cols-2 lg:grid-cols-4' : 'sm:grid-cols-2 lg:grid-cols-5'">
+			<div class="grid gap-4 gap-y-8"
+				:class="byCategory ? 'sm:grid-cols-2 lg:grid-cols-4' : 'sm:grid-cols-2 lg:grid-cols-5'">
 				<CardMovie v-for="movie in list" :movie="{ ...movie, rate: constants.getRndInteger(3.0, 5) }" />
 			</div>
 		</div>
