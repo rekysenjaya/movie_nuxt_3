@@ -1,13 +1,16 @@
 <script setup>
 const route = useRoute()
+const { loading, detail, getDetail } = useGetdetail()
 
-// When accessing /posts/1, route.params.id will be 1
-console.log(route.params.id)
+watchEffect(() => {
+	getDetail(route.params.id)
+})
 </script>
 
 
 <template>
-	<div>
-		detail boos = {{ route.params.id }}
-	</div>
+	<ClientOnly>
+		detail boos = {{ detail?.volumeInfo?.title || '' }}
+		<img v-if="!!loading" class="animate-spin h-3 w-3" src="/loading.png" />
+	</ClientOnly>
 </template>

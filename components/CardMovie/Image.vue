@@ -10,7 +10,7 @@ const { movie } = defineProps(['movie'])
 			style="background-color: rgba(30, 35, 43, 0.8);">
 			{{ movie?.rate }}
 		</div>
-		<NuxtLink :to="`/detail/${movie?.key}`" class="invisible "
+		<NuxtLink :to="`/detail/${movie?.id}`" class="invisible"
 			:class="!movie?.scale ? 'group-hover/item:visible cursor-pointer' : ''">
 			<div class="absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-around pt-2 pb-2"
 				style="background: rgba(0, 0, 0, 0.8)">

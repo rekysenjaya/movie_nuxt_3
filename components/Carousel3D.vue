@@ -16,10 +16,9 @@ onMounted(() => {
 <template>
 	<div class="pt-5 pb-5">
 		<Carousel :itemsToShow="3" :wrapAround="true" :transition="500">
-			<Slide v-for="movie in list" :key="slide" class="pl-5 pr-5">
+			<Slide v-for="movie in list" class="pl-5 pr-5">
 				<CardMovieCarousel :movie="{ ...movie, rate: constants.getRndInteger(3.0, 5) }" />
-			</slide>
-
+			</Slide>
 			<template #addons>
 				<pagination />
 			</template>

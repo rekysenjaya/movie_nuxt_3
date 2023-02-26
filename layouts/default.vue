@@ -44,7 +44,7 @@
 				</div>
 			</div>
 		</nav>
-		<div class="pt-40 sm:pt-14">
+		<div class="pt-40 sm:pt-[3.8rem]">
 			<slot />
 		</div>
 		<Footer />
