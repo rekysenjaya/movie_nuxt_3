@@ -1,13 +1,23 @@
 <script setup>
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+import constants from '~~/constants';
+
+const { loading, list, getList } = useAutocompleteSearch()
+
+onMounted(() => {
+	if (!list.value.length) {
+		getList({ q: 'love', maxResults: 3 })
+	}
+})
+
 </script>
 
 <template>
 	<div class="pt-5 pb-5">
 		<Carousel :itemsToShow="3" :wrapAround="true" :transition="500">
-			<Slide v-for="slide in 3" :key="slide" class="pl-5 pr-5">
-				<CardMovieCarousel :movie="{ key: slide }" />
+			<Slide v-for="movie in list" :key="slide" class="pl-5 pr-5">
+				<CardMovieCarousel :movie="{ ...movie, rate: constants.getRndInteger(3.0, 5) }" />
 			</slide>
 
 			<template #addons>
@@ -24,17 +34,5 @@ import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 
 .carousel__slide--active {
 	opacity: 1;
-}
-
-.carousel__pagination-button {
-	background-color: blue !important;
-}
-
-.carousel__pagination-button::after {
-	background-color: #8e9194 !important;
-}
-
-.carousel__pagination-button--active::after {
-	background-color: red !important;
 }
 </style>
