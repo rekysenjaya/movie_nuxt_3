@@ -11,13 +11,19 @@ onMounted(() => {
 	}
 })
 
+watchEffect(() => {
+	if (!list.value.length) {
+		getList({ q: 'love', maxResults: 3 })
+	}
+})
+
 const slideTo = (val) => currentSlide.value = val
 
 </script>
 
 <template>
 	<div class="pt-5 pb-5">
-		<Carousel :itemsToShow="3" :wrapAround="true" :transition="500" v-model="currentSlide">
+		<Carousel :itemsToShow="3" :wrapAround="true" :transition="500"  v-model="currentSlide">
 			<Slide v-for="movie in list" class="pl-5 pr-5">
 				<CardMovieCarousel :movie="{ ...movie, rate: constants.getRndInteger(3.0, 5) }" />
 			</Slide>

@@ -17,6 +17,11 @@ onMounted(() => {
 	}
 })
 
+watchEffect(() => {
+	if (!list.value.length) {
+		refresh()
+	}
+})
 
 watchEffect(() => {
 	if (route?.query?.sortBy || route?.query?.category) {
