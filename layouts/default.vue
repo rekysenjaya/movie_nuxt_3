@@ -1,6 +1,11 @@
+<script setup>
+const route = useRoute()
+</script>
+
 <template>
 	<div>
-		<nav class="fixed top-0 left-0 right-0 z-10" style="background-color: rgba(255, 255, 255, 0.05);;">
+		<nav class="top-0 left-0 right-0 z-10" :class="'absolute'"
+			style="background-color: rgba(255, 255, 255, 0.05);">
 			<div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
 				<div class="relative flex h-16 items-center justify-between">
 					<div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -44,7 +49,7 @@
 				</div>
 			</div>
 		</nav>
-		<div class="pt-40 sm:pt-[3.8rem]">
+		<div class="pt-40 sm:pt-[4rem]">
 			<slot />
 		</div>
 		<Footer />

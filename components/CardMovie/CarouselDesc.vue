@@ -8,7 +8,9 @@ const { movie } = defineProps(['movie'])
 			<img class="h-4 mr-1 w-auto" src="/start.png" alt="start" />
 			<span>{{ movie?.rate }}</span>
 		</div>
-		<h3 class="text-xl font-bold uppercase mt-1">{{ movie?.volumeInfo?.title }}</h3>
+		<NuxtLink :to="`/detail/${movie?.id}`">
+			<h3 class="text-xl font-bold uppercase mt-1">{{ movie?.volumeInfo?.title }}</h3>
+		</NuxtLink>
 		<div class="flex flex-row items-center mt-1">
 			<div class="text-base">2023</div>
 			<div class="bg-[#808080] h-1.5 w-1.5 m-1 rounded-full" />
