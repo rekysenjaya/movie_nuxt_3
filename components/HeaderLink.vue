@@ -29,7 +29,7 @@ const profileStore = useProfileStore();
 				{{ profileStore?.user?.username }}</div>
 			<div class="invisible group-hover:visible">
 				<div class="p-3 pb-0 bg-white absolute z-10 top-9.5 rounded-md flex flex-col">
-					<NuxtLink to="/change-password" class="font-semibold text-xs pb-3 text-black hover:font-bold cursor-pointer">
+					<NuxtLink to="/change-password" class="whitespace-nowrap font-semibold text-xs pb-3 text-black hover:font-bold cursor-pointer">
 						Change Password
 					</NuxtLink>
 					<div @click="authStore.logout()" class="font-semibold text-xs pb-3 text-black hover:font-bold cursor-pointer">
