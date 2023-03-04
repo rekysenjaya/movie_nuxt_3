@@ -12,13 +12,13 @@ const clickOrderBy = (val) => {
 const refresh = () => getList({ q: `${title || 'recomended'}${route?.query?.sortBy ? ` ${route?.query?.sortBy}` : ''}${route?.query?.category ? ` ${route?.query?.category}` : ''}`, maxResults })
 
 onMounted(() => {
-	if (!list.value.length) {
+	if (!list.value?.length) {
 		refresh()
 	}
 })
 
 watchEffect(() => {
-	if (!list.value.length) {
+	if (!list.value?.length) {
 		refresh()
 	}
 })

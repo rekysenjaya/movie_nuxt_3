@@ -1,11 +1,33 @@
 <script setup>
+import { useAuthStore } from '~~/stores/auth-store';
+import { useProfileStore } from '~~/stores/profile-store';
+
+const profileStore = useProfileStore();
 const route = useRoute()
+
+const checkToken = () => {
+	if (process.client) {
+		useAuthStore().$state.token = localStorage.getItem('token')
+		profileStore.getProfile()
+	}
+}
+
+onMounted(() => {
+	checkToken()
+})
+
+
+watchEffect(() => {
+	if (route?.path && !profileStore?.user?.id) {
+		checkToken()
+	}
+})
+
 </script>
 
 <template>
 	<div>
-		<nav class="top-0 left-0 right-0 z-10" :class="'absolute'"
-			style="background-color: rgba(255, 255, 255, 0.05);">
+		<nav class="top-0 left-0 right-0 z-10" :class="'absolute'" style="background-color: rgba(255, 255, 255, 0.05);">
 			<div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
 				<div class="relative flex h-16 items-center justify-between">
 					<div class="absolute inset-y-0 left-0 flex items-center sm:hidden">

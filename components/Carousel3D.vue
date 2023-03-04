@@ -6,13 +6,13 @@ const currentSlide = ref(0)
 const { list, getList } = useAutocompleteSearch()
 
 onMounted(() => {
-	if (!list.value.length) {
+	if (!list.value?.length) {
 		getList({ q: 'love', maxResults: 3 })
 	}
 })
 
 watchEffect(() => {
-	if (!list.value.length) {
+	if (!list.value?.length) {
 		getList({ q: 'love', maxResults: 3 })
 	}
 })

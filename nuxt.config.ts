@@ -1,4 +1,3 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	app: {
 		head: {
@@ -9,8 +8,29 @@ export default defineNuxtConfig({
 			]
 		}
 	},
-
+	build: {
+		transpile: [
+			"vee-validate/dist/rules"
+		],
+	},
+	plugins: [
+		{ src: '@/plugins/fake-backend', mode: 'client' }
+	],
 	modules: [
-		'@nuxtjs/tailwindcss'
-	]
+		'@nuxtjs/tailwindcss',
+		'@pinia/nuxt'
+	],
+	hooks: {
+		'pages:extend'(pages) {
+			pages.map(v => {
+				if (v.name === 'changePassword') {
+					v.path = '/change-password'
+				}
+				if (v.name === 'forgotPassword') {
+					v.path = '/forgot-password'
+				}
+				return v
+			})
+		}
+	}
 })

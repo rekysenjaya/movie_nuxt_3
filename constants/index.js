@@ -11,10 +11,6 @@ const menusList = [
 	{
 		name: 'TV Shows',
 		to: ''
-	},
-	{
-		name: 'Login',
-		to: ''
 	}
 ]
 
